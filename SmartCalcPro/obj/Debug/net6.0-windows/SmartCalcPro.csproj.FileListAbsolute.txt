@@ -1,0 +1,14 @@
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\bin\Debug\net6.0-windows\SmartCalcPro.exe
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\bin\Debug\net6.0-windows\SmartCalcPro.deps.json
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\bin\Debug\net6.0-windows\SmartCalcPro.runtimeconfig.json
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\bin\Debug\net6.0-windows\SmartCalcPro.dll
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\bin\Debug\net6.0-windows\SmartCalcPro.pdb
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\obj\Debug\net6.0-windows\SmartCalcPro.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\obj\Debug\net6.0-windows\SmartCalcPro.AssemblyInfoInputs.cache
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\obj\Debug\net6.0-windows\SmartCalcPro.AssemblyInfo.cs
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\obj\Debug\net6.0-windows\SmartCalcPro.csproj.CoreCompileInputs.cache
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\obj\Debug\net6.0-windows\SmartCalcPro.dll
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\obj\Debug\net6.0-windows\refint\SmartCalcPro.dll
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\obj\Debug\net6.0-windows\SmartCalcPro.pdb
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\obj\Debug\net6.0-windows\SmartCalcPro.genruntimeconfig.cache
+C:\Users\Trush\OneDrive\Desktop\SmartCalcPro\SmartCalcPro\obj\Debug\net6.0-windows\ref\SmartCalcPro.dll

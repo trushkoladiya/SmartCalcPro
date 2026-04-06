@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "C7q4RKeVA10=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Trush\\OneDrive\\Desktop\\SmartCalcPro\\SmartCalcPro\\SmartCalcPro.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Trush\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Trush\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Trush\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Trush\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512"
+  ],
+  "logs": []
+}
