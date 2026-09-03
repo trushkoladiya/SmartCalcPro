@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudChess ♟️ — Real-Time Multiplayer Chess</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♟️</text></svg>">
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+        <a class="brand" href="/">
+            <span class="brand-icon">♟️</span>
+            <span class="brand-name">CloudChess</span>
+            <span class="brand-badge">Cloud Workload</span>
+        </a>
+        <div class="header-actions">
+            <button class="btn-icon" id="btn-sound-toggle" title="Toggle Sound">🔊</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content">
+
+        <!-- 1. LOBBY VIEW -->
+        <section id="lobby-view" class="lobby-view">
+            <div class="card">
+                <h1 class="lobby-title">Instant Online Chess</h1>
+                <p class="lobby-subtitle">No registration. Pick a username and play with a friend anywhere in real time.</p>
+
+                <div class="form-group">
+                    <label class="form-label" for="username-input">Your Display Name</label>
+                    <input type="text" id="username-input" class="input-text" placeholder="Enter username (e.g. Trush)" maxlength="20" autofocus autocomplete="off">
+                </div>
+
+                <button id="btn-create-game" class="btn btn-primary">
+                    <span>⚡</span> Create New Game
+                </button>
+
+                <div class="divider">
+                    <span>or join with room code</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="room-code-input">Room Code</label>
+                    <input type="text" id="room-code-input" class="input-text input-room-code" placeholder="ABCD" maxlength="5" autocomplete="off">
+                </div>
+
+                <button id="btn-join-game" class="btn btn-secondary">
+                    <span>🎯</span> Join Existing Game
+                </button>
+
+                <div class="lobby-stats">
+                    <div class="stat-item">
+                        <span class="stat-dot"></span>
+                        <span id="stat-active-games">Server online</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. GAME VIEW -->
+        <section id="game-view" class="game-view" style="display: none;">
+            
+            <!-- Chess Board & Player Cards -->
+            <div class="board-wrapper">
+                <!-- Top Player (Opponent) -->
+                <div class="player-card">
+                    <div class="player-info">
+                        <div id="top-player-avatar" class="player-avatar black">B</div>
+                        <div>
+                            <div id="top-player-name" class="player-name">Opponent</div>
+                            <div id="top-captured-tray" class="captured-tray"></div>
+                        </div>
+                    </div>
+                    <div id="top-player-status" class="player-status-pill pill-waiting">Waiting</div>
+                </div>
+
+                <!-- 8x8 Board Container -->
+                <div id="chess-board" class="chess-board"></div>
+
+                <!-- Bottom Player (You) -->
+                <div class="player-card">
+                    <div class="player-info">
+                        <div id="bottom-player-avatar" class="player-avatar white">W</div>
+                        <div>
+                            <div id="bottom-player-name" class="player-name">You</div>
+                            <div id="bottom-captured-tray" class="captured-tray"></div>
+                        </div>
+                    </div>
+                    <div id="bottom-player-status" class="player-status-pill pill-active">Your turn</div>
+                </div>
+            </div>
+
+            <!-- Game HUD / Side Panel -->
+            <aside class="game-panel">
+                <!-- Room Badge Card -->
+                <div class="room-badge-card">
+                    <div class="room-badge-left">
+                        <span class="room-badge-title">Invite Room Code</span>
+                        <span id="room-code-display" class="room-badge-code">----</span>
+                    </div>
+                    <button id="btn-copy-room" class="btn btn-secondary btn-copy" title="Copy Invite Link">
+                        📋 Copy
+                    </button>
+                </div>
+
+                <!-- Status Banner -->
+                <div id="status-banner" class="status-banner your-turn">
+                    <span id="status-text">🟢 Game Ready</span>
+                </div>
+
+                <!-- Move History -->
+                <div class="history-container">
+                    <div id="history-list" class="history-list"></div>
+                </div>
+
+                <!-- Controls -->
+                <div class="panel-actions">
+                    <button id="btn-resign" class="btn btn-danger">
+                        <span>🏳️</span> Resign
+                    </button>
+                </div>
+            </aside>
+        </section>
+
+    </main>
+
+    <!-- Pawn Promotion Modal -->
+    <div id="promotion-modal" class="modal-overlay">
+        <div class="modal-box">
+            <h2 class="modal-title">Promote Pawn</h2>
+            <p class="modal-desc">Choose a piece to replace your pawn:</p>
+            <div id="promotion-pieces-container" class="promotion-pieces"></div>
+        </div>
+    </div>
+
+    <!-- Resign Confirmation Modal -->
+    <div id="resign-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon">🏳️</div>
+            <h2 class="modal-title">Resign Game?</h2>
+            <p class="modal-desc">Are you sure you want to forfeit this match? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button id="btn-cancel-resign" class="btn btn-secondary">Cancel</button>
+                <button id="btn-confirm-resign" class="btn btn-danger">Yes, Resign</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="game-over-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon">♟️</div>
+            <h2 id="game-over-title" class="modal-title">Game Over</h2>
+            <p id="game-over-reason" class="modal-desc">Checkmate! White wins.</p>
+            <div class="modal-actions">
+                <button id="btn-rematch" class="btn btn-success">
+                    <span>🔄</span> Rematch
+                </button>
+                <button id="btn-return-lobby" class="btn btn-secondary">
+                    <span>🏠</span> Lobby
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Application Scripts -->
+    <script src="/static/js/websocket.js"></script>
+    <script src="/static/js/chess-game.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
