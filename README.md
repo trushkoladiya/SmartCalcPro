@@ -1,98 +1,78 @@
-# ⚡ SmartCalc Pro
+# CloudChess ♟️
 
-A **unique Windows Forms Calculator** built in C# (.NET 6) as part of the .NET Programming Lab (303105352) — Unit 4 Project.
+A real-time multiplayer online chess platform — quick play, no sign-ups.
 
-## ✨ What Makes It Different
+Pick a username, create or join a room, and play chess instantly.
 
-Unlike a plain basic calculator, **SmartCalc Pro** combines three calculators in one sleek dark-themed app:
+## What is this?
 
-|Feature|Description|
-|-|-|
-|🔢 Standard Calculator|Full arithmetic: +, −, ×, ÷, %|
-|🔬 Scientific Calculator|sin, cos, tan (degrees), √, x², log, ln|
-|🔄 Unit Converter|°C↔°F, km↔mi, kg↔lb — built right in|
+CloudChess is a **Cloud Engineering portfolio project**. The application is a real-time chess game, but the real project is the infrastructure underneath — deployment, networking, security, scaling, monitoring, and automation on AWS.
 
-## 🎨 UI Highlights
+## Architecture
 
-* **Dark theme** with color-coded button groups
-* **Expression history** bar shows the full calculation in real time
-* **Mode indicator** shows whether you're in Standard / Scientific / Converter mode
-* **Auto font shrink** — long numbers scale down automatically so they always fit
-* **Hover \& click animations** on every button
-
-## 📁 Project Structure
+**Current:** Local development
 
 ```
-SmartCalcPro/
-├── SmartCalcPro.sln          ← Solution file (open this in Visual Studio)
-└── SmartCalcPro/
-    ├── SmartCalcPro.csproj   ← Project file (.NET 6 WinForms)
-    ├── Program.cs            ← Entry point
-    ├── Form1.cs              ← All UI + logic (single-file design)
-    └── Form1.Designer.cs     ← Designer partial class
+Player A ──WebSocket──→ Python Backend ←──WebSocket── Player B
 ```
 
-## 🚀 How to Run
-
-### Prerequisites
-
-* Visual Studio 2022 (Community or higher)
-* .NET 6 SDK with **Windows Forms** workload
-
-### Steps
-
-1. Clone / download and unzip this repo
-2. Open `SmartCalcPro.sln` in Visual Studio
-3. Press **F5** or click ▶ Run
-4. The app launches instantly — no database, no config needed
-
-## 🧮 Supported Operations
-
-### Standard
+**Target:** AWS cloud infrastructure
 
 ```
-7 + 3 = 10
-100 ÷ 4 = 25
-5 × 6 = 30
-50 % → 0.5
+Internet → Route 53 → ALB → EC2 (Docker) → RDS
+                                ↓
+                              Redis (shared state)
+                                ↓
+                         S3 + CloudWatch + IAM
+                    All managed via Terraform + CI/CD
 ```
 
-### Scientific
+## Tech Stack
+
+| Component | Technology |
+|-----------|-----------|
+| Frontend | HTML, CSS, JavaScript |
+| Backend | Python 3.11+, FastAPI, uvicorn |
+| Real-time | WebSocket |
+| Game Logic | python-chess |
+| Containerization | Docker |
+| Infrastructure | AWS (VPC, EC2, RDS, S3, IAM, Route 53) |
+| IaC | Terraform |
+| CI/CD | GitHub Actions |
+| Monitoring | CloudWatch |
+
+## Project Structure
 
 ```
-sin(30°) = 0.5
-cos(60°) = 0.5
-√(144)   = 12
-5²       = 25
-log(100) = 2
-ln(e)    = 1
+cloudchess/
+├── frontend/          — Chess UI (HTML/CSS/JS)
+├── backend/           — Python FastAPI server
+├── infrastructure/    — Terraform configs
+├── scripts/           — Deployment & utility scripts
+├── docs/              — Architecture docs, incidents, decisions
+├── load-tests/        — Load testing scripts
+├── .gitignore
+├── README.md
+└── LICENSE
 ```
 
-### Unit Converter (uses current display value)
+## How to Play
 
-```
-100 °C → °F  = 212
-32  °F → °C  = 0
-10  km → mi  = 6.21371
-70  kg → lb  = 154.324
-```
+> Coming soon — app is under development.
 
-## 📚 Concepts Used (Unit 4 — Windows Forms)
+## Infrastructure Phases
 
-* Windows Forms controls: `Label`, `Button`
-* Event handling (`Button.Click`)
-* Dynamic property modification at runtime (Font, Color, Text)
-* Custom UI painting (flat style, color palette)
-* C# pattern matching (`switch` expressions)
-* Math library functions (`Math.Sin`, `Math.Sqrt`, etc.)
+- [ ] Docker containerization
+- [ ] AWS VPC & networking
+- [ ] EC2 deployment
+- [ ] RDS (PostgreSQL)
+- [ ] S3 storage
+- [ ] Terraform (IaC)
+- [ ] CloudWatch monitoring
+- [ ] Reliability & failure testing
+- [ ] ALB + Auto Scaling + Redis
+- [ ] CI/CD with GitHub Actions
 
-## 👨‍💻 Developer
+## License
 
-**Enrollment No:** 2303031080004  
-**Subject:** .NET Programming Lab — 303105352  
-**Session:** 2025-26 | Parul University
-
-\---
-
-*Built with ❤️ using C# + Windows Forms*
-
+MIT
